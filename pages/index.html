@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Choose a 3DS Demo</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+    <div class="w3-panel w3-green w3-center">
+        <h2>TokenEx 3DS Demo App</h2>
+    </div>
+    <div class="w3-container">
+        <h3>Overview</h3>
+        <p>
+            This is a demo of the TokenEx 3DS Product. Select a device fingerprinting option below to get started.
+            <br><br>TokenEx device fingerprinting is handled through the TokenEx Iframe and adds two values to the
+            configuration: <code>use3DS:true</code> and <code>threeDSMethodNotificationUrl</code> for receiving the notification when device
+            fingerprinting is completed. A TokenEx Iframe notice is also raised when device fingerprinting is completed.
+            Either the notification or the notice can be used to trigger an Authentication API call.
+            <br><br>Manual device fingerprinting happens outside the TokenEx Iframe (simply used for tokenizing the PAN in this
+            scenario) and is managed by the merchant.
+            Both demos can be used to assist with developing your application's authentication flow.
+        </p>
+    </div>
+
+    <div class="w3-container w3-center">
+        <h3>Choose a Device Fingerprinting Method</h2>
+        <div class="w3-row">
+            <div class="w3-half">
+                <button class="w3-button w3-green w3-large" onclick="redirectToTokenExFingerprintingPage()">
+                    TokenEx Device Fingerprinting
+                </button>
+            </div>
+            <div class="w3-half">
+                <button class="w3-button w3-blue w3-large" onclick="redirectToManualFingerprintingPage()">
+                    Manual Device Fingerprinting
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-container" style="margin-top: 50px;">
+        <h3>Documentation</h3>
+        <a href="https://docs.tokenex.com/docs/3ds" target="_blank">TokenEx 3DS Documentation</a><br>
+        <a href="https://docs.tokenex.com/docs/3ds-test-cases" target="_blank">3DS Test Cards and Scenarios</a>
+    </div>
+
+    <script>
+        function redirectToTokenExFingerprintingPage() {
+            // Redirect to the TokenEx Device Fingerprinting page
+            window.location.href = 'TokenExDeviceFingerprinting.html';
+        }
+
+        function redirectToManualFingerprintingPage() {
+            // Redirect to the Manual Device Fingerprinting page
+            window.location.href = 'ManualDeviceFingerprinting.html';
+        }
+    </script>
+</body>
+
+</html>

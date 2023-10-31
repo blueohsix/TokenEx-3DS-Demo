@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3DS Demo (manual device fingerprint)</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+    <div class="w3-panel w3-blue w3-center">
+        <h2>Manual Device Fingerprinting</h2>
+    </div>
+    <a href="https://docs.tokenex.com/docs/3-d-secure-device-fingerprinting#outside-the-tokenex-iframe" target="_blank"
+        style="display: block; font-size: 1.5em; margin-top: 20px;" class="w3-center">Documentation</a>
+
+    <div id="overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999;">
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+            <img src="loading.gif" alt="Loading..." style="width: 50%; height: 50%;">
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <div class="w3-container">
+        <form id="checkout-form">
+            <div class="w3-row-padding">
+                <div id="card-number-div" class="w3-half">
+                    <label for="card-number" class="w3-text-blue">Card Number:</label>
+                </div>
+                <div id="cvv-div" class="w3-half">
+                    <label for="cvv" class="w3-text-blue">CVV:</label>
+                </div>
+            </div>
+
+            <div class="w3-row-padding">
+                <div class="w3-half">
+                    <label for="expDate" class="w3-text-blue">Card Expiration (YYMM):</label>
+                    <input type="text" id="expDate" required class="w3-input w3-border">
+                </div>
+                <div class="w3-half">
+                    <label for="fullName" class="w3-text-blue">Full Name:</label>
+                    <input type="text" id="fullName" required class="w3-input w3-border" value="Bobby Tables">
+                </div>
+            </div>
+
+            <div class="w3-row-padding">
+                <div class="w3-row-padding">
+                    <label for="email" class="w3-text-blue">Email:</label>
+                    <input type="text" id="email" required class="w3-input w3-border" pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                        title="Please enter a valid email address" value="littleBobbyTables@example.com">
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div class="w3-container">
+            <label class="w3-text-blue">Authentication Type (Message Category):</label>
+            <div class="w3-row-padding">
+                <div class="">
+                    <input type="radio" id="paymentAuth" name="authType" value="1" checked>
+                    <label for="paymentAuth">Payment Authentication</label>
+                </div>
+                <div class="">
+                    <input type="radio" id="nonPaymentAuth" name="authType" value="2">
+                    <label for="nonPaymentAuth">Non-Payment Authentication</label>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-center">
+            <button id="tokenizeAndAuthenticate" type="submit" class="w3-button w3-blue">
+                Tokenize and Authenticate
+            </button>
+        </div>
+    </div>
+
+    <div id="deviceFingerprintDiv" style="display:none">
+
+    </div>
+
+    <div id="challengeDiv" class="w3-modal w3-animate-zoom">
+        <span onclick="document.getElementById('challengeDiv').style.display='none'"
+            class="w3-button w3-display-topright">&times;</span>
+    </div>
+
+    <div id="resultsDiv" class="w3-modal w3-animate-zoom">
+        <span onclick="document.getElementById('resultsDiv').style.display='none'"
+            class="w3-button w3-display-topright">&times;</span>
+    </div>
+
+    <script src="https://test-htp.tokenex.com/Iframe/iframe-v3.min.js" crossorigin="anonymous"></script>
+    <script type="module" src="../scripts/script.mjs"></script>
+
+    <script>
+        // Set default values for card expiration
+        const expDateInput = document.getElementById("expDate");
+
+        // Set default expiration date (1 year from now)
+        const currentDate = new Date();
+        currentDate.setFullYear(currentDate.getFullYear() + 1);
+        const year = currentDate.getFullYear().toString().substring(2);
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        expDateInput.value = year + month;
+    </script>
+</body>
+
+</html>
