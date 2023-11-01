@@ -1,4 +1,4 @@
-This node.js repository is a demo application of TokenEx's 3DS cardholder authentication. It uses the TokenEx Iframe and 3DS products. 
+This node.js repository is an example implementation of TokenEx's 3DS cardholder authentication. It uses the TokenEx Iframe and 3DS products. 
 
 Prior to running, adjust the `configuration.mjs` `challengeNotificationUrl`, `txTokenExId`, `txApiKey`,  and the `script.mjs` `backendServer`. 
 To run, `npm install`, followed by `npm start`. 
